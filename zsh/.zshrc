@@ -118,7 +118,7 @@ alias zc='n ~/.zshrc'
 alias abrar='cd .. & cd usr/var/lib/proot-distro/installed-rootfs/ubuntu-oldlts/home/abrar'
 alias live="live-server"
 alias cDot="git clone https://github.com/abrarishere/dotFiles"
-alias cWeb="git clone https://github.com/abrarishere/frontendOnAndroid"
+# alias cWeb="git clone https://github.com/abrarishere/frontendOnAndroid"
 
 
 # ---- FZF -----
