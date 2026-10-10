@@ -69,7 +69,7 @@ return {
         },
       },
       filters = {
-        dotfiles = true,                                            -- Show dotfiles
+        dotfiles = false,                                           -- Show dotfiles
         custom = { ".DS_Store", ".git", "node_modules", ".cache" }, -- Filter these files
       },
       git = {

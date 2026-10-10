@@ -26,5 +26,9 @@ return {
 	-- 	end,
 	-- },
 	"github/copilot.vim",
+	cmd = "Copilot",
 	event = "InsertEnter",
+	init = function()
+		vim.g.copilot_version = false
+	end,
 }

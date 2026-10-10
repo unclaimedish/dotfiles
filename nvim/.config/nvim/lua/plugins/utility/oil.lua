@@ -25,7 +25,7 @@ function M.config()
 			["<C-p>"] = "actions.preview",
 			["<C-c>"] = "actions.close",
 			["q"] = "actions.close",
-			["esc"] = "actions.close",
+			["<Esc>"] = "actions.close",
 			["r"] = "actions.refresh",
 			["h"] = "actions.parent",
 			["_"] = "actions.open_cwd",

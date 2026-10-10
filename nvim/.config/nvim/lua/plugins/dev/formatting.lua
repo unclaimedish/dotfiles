@@ -36,11 +36,6 @@ return {
 				lsp_fallback = true,
 				-- Remove async option since it is not supported here
 			},
-			format_after_save = {
-				lsp_fallback = true,
-				async = true, -- Enable asynchronous formatting for after-save
-				timeout_ms = 1500, -- Set a timeout for formatting operations
-			},
 		})
 
 		-- Keybinding for formatting the current file

@@ -10,7 +10,7 @@ return {
         "ray-x/lsp_signature.nvim",
         -- event = "VeryLazy",
         config = function(_)
-          opts = {
+          local opts = {
             floating_window = false,
             floating_window_above_cur_line = true,
             hint_scheme = "Comment",
@@ -29,20 +29,16 @@ return {
           },
         },
       })
+      vim.lsp.config("*", {
+        capabilities = require("cmp_nvim_lsp").default_capabilities(),
+      })
+
       require("mason-lspconfig").setup({
         ensure_installed = {
           "html",
           "cssls",
           "pyright",
           "stimulus_ls",
-        },
-        handlers = {
-          function(servername)
-            require("lspconfig")[servername].setup({
-              on_attach = require("mason").on_attach,
-              capabilities = require("cmp_nvim_lsp").default_capabilities(),
-            })
-          end,
         },
       })
       require("mason-tool-installer").setup({
@@ -63,15 +59,9 @@ return {
         },
       })
 
-      local nvim_lsp = require("lspconfig")
-      nvim_lsp.ruff.setup({
-        -- init_options = {
-        --   settings = {
-        --     -- Ruff language server settings go here
-        --   }
-        -- }
-      })
-      nvim_lsp.lua_ls.setup({})
+      vim.lsp.config("ruff", {})
+      vim.lsp.config("lua_ls", {})
+      vim.lsp.enable({ "ruff", "lua_ls" })
       vim.api.nvim_create_autocmd("LspAttach", {
         group = vim.api.nvim_create_augroup("UserLspConfig", {}),
         callback = function(ev)

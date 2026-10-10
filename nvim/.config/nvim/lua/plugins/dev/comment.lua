@@ -7,6 +7,8 @@ return {
 		"nvim-treesitter/nvim-treesitter", -- Ensure Treesitter is available
 	},
 	config = function()
+		require("Comment.ft").set("zsh", "#%s")
+
 		-- Import the Comment plugin
 		local comment = require("Comment")
 
@@ -16,7 +18,12 @@ return {
 		-- Setup the Comment plugin
 		comment.setup({
 			--- Add any additional configurations here if needed
-			pre_hook = ts_context_commentstring.create_pre_hook(), -- Context-aware commentstring for Treesitter
+			pre_hook = function(context)
+				if vim.bo.filetype == "zsh" then
+					return "#%s"
+				end
+				return ts_context_commentstring.create_pre_hook()(context)
+			end,
 			post_hook = nil, -- You can define post_hook if needed
 			mappings = {
 				basic = true, -- Enable basic mappings
